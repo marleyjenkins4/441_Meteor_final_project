@@ -1,13 +1,27 @@
-console.log('Log from /client/main.js')
-// import './../imports/utils.js';
+import React from 'react';   //specify the module and then specifcy the library name
+                            //meteor takes care of the rest
+import ReactDOM from 'react-dom';
+import {Meteor} from 'meteor/meteor'; //named export from Meteor
+
+  //as far we have 3 ways to imports
+  //1. relative paths './../imports/file'
+  //2. npm libraries providig the name 'react-dom'
+  //3. metoer modules 'metoer/meteor' . the meteor / removes name conflicts
+
+Meteor.startup(function(){
+  let name= 'newman';
+  let jsx = (
+          <div>
+              <p> this is from client/main.js </p>
+              <p> Hello {name} </p>
+           </div>
+         );
+
+  ReactDOM.render (jsx,document.getElementById('content'));
+});
 
 
-//import {add} from './../imports/math.js';
-//import {say_hello} from './../imports/utils.js'
-import any_name_default_var, {say_hello,name} from './../imports/utils.js'
-console.log(any_name_default_var)
-//  console.log(add(5,6));
-/*
-console.log(say_hello)
-console.log(name);
-*/
+
+
+
+//relative paths './../imports/file'
