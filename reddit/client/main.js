@@ -17,7 +17,6 @@ const renderPosts= function(passed_posts){
 };
 
 
-
 const renderCandidates = function(candidateList) {
     return candidateList.map(function(candidate) {
 
@@ -59,15 +58,14 @@ const posts=[{
             votes: 5,
           }
 ];
-  let title="441 Reddit";
+  let title="CSCI EXAM";
   let jsx= (
             <div>
-            
+
               <h1> {title}</h1>
 
-              {/*renderPosts('hello')*/}
-              {renderPosts(posts)}
-              {renderCandidates(candidates)}
+
+
 
 
             </div>
