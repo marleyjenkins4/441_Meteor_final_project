@@ -34,6 +34,7 @@ Meteor.startup(function(){
   let jsx= (
             <div>
               <h1> {title}</h1>
+              {/* the following is static but in the future it will be dymnamic b/c it will come from idk i cant see */}
               {/*[<p key='1'> p1</p> , <p key='2'> p2</p>, <p key='3'> p3</p>]*/}
               {renderSomeParagraphs()}
               {renderArrayMap()}
