@@ -1,33 +1,44 @@
-import React from 'react';   //specify the module and then specifcy the library name
-                            //meteor takes care of the rest
+import React from 'react';
+
 import ReactDOM from 'react-dom';
-import {Meteor} from 'meteor/meteor'; //named export from Meteor
-
-  //as far we have 3 ways to imports
-  //1. relative paths './../imports/file'
-  //2. npm libraries providig the name 'react-dom'
-  //3. metoer modules 'metoer/meteor' . the meteor / removes name conflicts
+import {Meteor} from 'meteor/meteor';
 
 
-//meteor.startup wait for the dom to be renders before doing anything
-Meteor.startup(function(){ //this takes a function as its one and onyl argument
-  //we now need to render jsx which is javascript
-  //let jsx=       <p> this is from client/main.js </p>
+Meteor.startup(function(){
+//basic functions that does ot accept any parameters
+  const renderSomeParagraphs= function(){
+    //return [<p> p1</p>, <p> p 2 </p> , <p> p 3 </p> ];
+    return [<p key='1'> p1</p> , <p key='2'> p2</p>, <p key='3'> p3</p>];
+  };
+    const renderArrayMap= function(){
+      let numbers=[{val:1},{val:2},{val:3}];
+      //the following is an array map which is an array method
+      //basically it is going to process the numbers renderArrayMap
+      //one at a time- each array (e.g., val:1) is assigned to number
+      let newNumbers= numbers.map(function(number){
+        return number.val-1;
 
-  let name= 'newman';
-  let jsx =  <p> Hello {name} </p>
+      });
+      console.log(newNumbers);
+    };
+    const renderPosts= function(passed_posts){
+      console.log(passed_posts);
+      let numbers=[{val:11},{val:23},{val:33}];
+      let newNumbers= numbers.map(function(number){
+        return <p key={number.val}>{number.val}</p>;
 
-  //the following causes problems b/c it violates the rule that you argument
-  //you are only allowed to have one root element
-  //let jsx= <p> this is form client/main.js </p> <p> hello {name}</p>;
-  //instead we need to wrap it in a single root element i.e <div>
-
-  jsx= <div> <p> this is from client/main.js</p><p> hello {name}!</p></div>;
-  jsx= (
-    <div>
-      <p> this is from client/main.js</p>
-      <p> hello {name}!</p>
-      </div>
+      });
+      return newNumbers;
+    };
+  let title="441 Reddit";
+  let jsx= (
+            <div>
+              <h1> {title}</h1>
+              {/*[<p key='1'> p1</p> , <p key='2'> p2</p>, <p key='3'> p3</p>]*/}
+              {renderSomeParagraphs()}
+              {renderArrayMap()}
+              {renderPosts('hello')}
+            </div>
   );
   ReactDOM.render (jsx,document.getElementById('content'));
 });
