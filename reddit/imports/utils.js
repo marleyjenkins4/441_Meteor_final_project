@@ -8,4 +8,8 @@ export let say_hello = function() {
 export let name ='michael whitney'; // multiple named imports
 
 
-export default 'this is a default al from import/utils.js';
+//export default 'this is a default from import/utils.js';
+
+
+let some_default = 'this is a default val from ./../imports/utils.js';
+export default some_default;
