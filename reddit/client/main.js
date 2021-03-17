@@ -4,41 +4,72 @@ import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor';
 
 
+
+
+const renderPosts= function(passed_posts){
+  console.log(passed_posts);
+
+  let formattedPosts = passed_posts.map(function(post){
+    return <p key={post._id}>{post.topic} have {post.votes} vote[s]</p>;
+
+  });
+  return formattedPosts;
+};
+
+
+
+const renderCandidates = function(candidateList) {
+    return candidateList.map(function(candidate) {
+
+      return <p key={candidate._id}>{candidate.name} have {candidate.votes} vote[s]</p>;
+    });
+
+};
+
+
+
 Meteor.startup(function(){
-//basic functions that does ot accept any parameters
-  const renderSomeParagraphs= function(){
-    //return [<p> p1</p>, <p> p 2 </p> , <p> p 3 </p> ];
-    return [<p key='1'> p1</p> , <p key='2'> p2</p>, <p key='3'> p3</p>];
-  };
-    const renderArrayMap= function(){
-      let numbers=[{val:1},{val:2},{val:3}];
-      //the following is an array map which is an array method
-      //basically it is going to process the numbers renderArrayMap
-      //one at a time- each array (e.g., val:1) is assigned to number
-      let newNumbers= numbers.map(function(number){
-        return number.val-1;
 
-      });
-      console.log(newNumbers);
-    };
-    const renderPosts= function(passed_posts){
-      console.log(passed_posts);
-      let numbers=[{val:11},{val:23},{val:33}];
-      let newNumbers= numbers.map(function(number){
-        return <p key={number.val}>{number.val}</p>;
 
-      });
-      return newNumbers;
-    };
+  const candidates = [{
+      _id: '01',
+      name: 'pat',
+      votes: 5,
+    }, {
+      _id: '02',
+      name: 'chris',
+      votes: 2,
+    }
+  ];
+
+const posts=[{
+
+            _id: '01',
+            topic:'cats',
+            votes: 3,
+          },
+          {
+            _id: '02',
+            topic:'dogs',
+            votes: 2,
+          },
+          {
+            _id: '03',
+            topic:'birds',
+            votes: 5,
+          }
+];
   let title="441 Reddit";
   let jsx= (
             <div>
+            
               <h1> {title}</h1>
-              {/* the following is static but in the future it will be dymnamic b/c it will come from idk i cant see */}
-              {/*[<p key='1'> p1</p> , <p key='2'> p2</p>, <p key='3'> p3</p>]*/}
-              {renderSomeParagraphs()}
-              {renderArrayMap()}
-              {renderPosts('hello')}
+
+              {/*renderPosts('hello')*/}
+              {renderPosts(posts)}
+              {renderCandidates(candidates)}
+
+
             </div>
   );
   ReactDOM.render (jsx,document.getElementById('content'));

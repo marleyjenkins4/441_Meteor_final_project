@@ -1,9 +1,19 @@
-console.log('log from /imports/utils.js');
+console.log('log from /imports/math.js');
 
 // import './../imports/utils.js'
-let add= function(x,y) {
+export let add= function(x,y) {
 return x+y;
 
 }
 
-export default add;
+export let multiply= function(x,y) {
+return x*y;
+
+}
+
+let squared= function(y) {
+return y*y;
+
+}
+
+export default squared;
