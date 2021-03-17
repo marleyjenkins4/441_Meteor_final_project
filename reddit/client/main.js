@@ -1,11 +1,25 @@
-import React from 'react';
-
+import React from 'react'; // specficy the module and then specify  the library name
+                           //meteor takes care of the rest
 import ReactDOM from 'react-dom';
-import {Meteor} from 'meteor/meteor';
+import {Meteor} from 'meteor/meteor'; //named export from Meteor
+import {UP_Collection_Access} from './../imports/api/user_posts.js';
+
+
+console.log(UP_Collection_Access.find().fetch());
+
+
+setTimeout(function(){
+  console.log('Posting 2', UP_Collection_Access.find().fetch());
+
+},1000);
+
+
+Tracker.autorun(function() {
+  console.log('Posting 3', UP_Collection_Access.find().fetch());
 
 
 
-
+});
 const renderPosts= function(passed_posts){
   console.log(passed_posts);
 
