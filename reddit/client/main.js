@@ -4,22 +4,17 @@ import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor'; //named export from Meteor
 import {UP_Collection_Access} from './../imports/api/user_posts.js';
 
-
+//the following is an empty array b/c DDP has synched up with the two DB
 console.log(UP_Collection_Access.find().fetch());
 
-
+//hack fix- set timeout
 setTimeout(function(){
   console.log('Posting 2', UP_Collection_Access.find().fetch());
 
 },1000);
+//this is a bad solution because it only fires content//if the data updates we wont see the updates
 
 
-Tracker.autorun(function() {
-  console.log('Posting 3', UP_Collection_Access.find().fetch());
-
-
-
-});
 const renderPosts= function(passed_posts){
   console.log(passed_posts);
 
@@ -31,47 +26,15 @@ const renderPosts= function(passed_posts){
 };
 
 
-const renderCandidates = function(candidateList) {
-    return candidateList.map(function(candidate) {
-
-      return <p key={candidate._id}>{candidate.name} have {candidate.votes} vote[s]</p>;
-    });
-
-};
-
 
 
 Meteor.startup(function(){
+  //it is better to use built in meteor function called Tracker
+  //Tracker queries and reruns code when queries  change
+  Tracker.autorun(function() {
+  //  console.log('Posting 3', UP_Collection_Access.find().fetch());
+    const posts=UP_Collection_Access.find().fetch();
 
-
-  const candidates = [{
-      _id: '01',
-      name: 'pat',
-      votes: 5,
-    }, {
-      _id: '02',
-      name: 'chris',
-      votes: 2,
-    }
-  ];
-
-const posts=[{
-
-            _id: '01',
-            topic:'cats',
-            votes: 3,
-          },
-          {
-            _id: '02',
-            topic:'dogs',
-            votes: 2,
-          },
-          {
-            _id: '03',
-            topic:'birds',
-            votes: 5,
-          }
-];
   let title="CSCI EXAM";
   let jsx= (
             <div>
@@ -80,7 +43,7 @@ const posts=[{
 
 
 
-
+              {renderPosts(posts)}
 
             </div>
   );
@@ -89,6 +52,4 @@ const posts=[{
 
 
 
-
-
-//relative paths './../imports/file'
+});
