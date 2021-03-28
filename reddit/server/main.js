@@ -7,21 +7,42 @@ import {UP_Collection_Access} from './../imports/api/user_posts.js';
 
 
 Meteor.startup(function(){
-  UP_Collection_Access.insert({
-    topic:'dog',
-    votes:9,
+  //access
+  let square = function(x){ //functions can be anonymous like this one
+    return x*x;             //we take the anonymous function and store it on
+  }                         //square variable
+  console.log(square(10));
+
+  function squareNamed(x){return x*x}; //named function that produces the same result
+  console.log(squareNamed(9));
+  //problem  - arrow functions only support anonymous functions
+
+//ES6 function
+  let square2 = (x) => { //dont need to state function
+    return x*x; //this is known as a statment syntax
+  };
+  console.log(square2(4));
+
+  let square3= (x) => x*x; //this is known as expression syntax
+
+  //anotherexample with an object
+
+  let user = {
+    name :'newMan',
+    sayHi: function(){ // this a basic ES5 function
+      console.log(this.name)
+    },
   }
-);
-    UP_Collection_Access.insert({
-      topic:'bird',
-      votes:93,
-    }
-);
+  user.sayHi();
 
 
-  //.find() returns everything
-  //.fetch()  is a pointer to some documents in the // DB
-  // to get an array of the documents you use .fetch()
+  // let user2= {
+  //   name :'newMan',
+  //   sayHi: () => {
+  //     console.log(this.name)
+  //   },
+  // }
+  // user.sayHi();
+  //
 
-UP_Collection_Access.find().fetch()
 });
