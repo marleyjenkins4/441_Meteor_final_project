@@ -36,6 +36,8 @@ const renderPosts= function(passed_posts){
 
 
 
+
+
 Meteor.startup(function(){
 
   UP_Collection_Access.insert({
@@ -48,16 +50,15 @@ Meteor.startup(function(){
   //  console.log('Posting 3', UP_Collection_Access.find().fetch());
     const allPostsInDB=UP_Collection_Access.find().fetch();
 
-  let title="CSCI EXAM";
+  let title="441 reddit";
   let jsx= (
             <div>
 
               <h1> {title}</h1>
-              <form onSubmit ={processFormDataFunction}>
-                <input type='text' name='formInputNameAttribute' placeholder='Topic Name'/>
-                <button> Add Topic </button>
-                </form>
-
+              <form onSubmit={processFormDataFunction}>
+              <input type='text' name= "formInputNameAttribute" placeholder='Topic Name'/>
+              <button> Add Topic </button>
+              </form>
               {renderPosts(allPostsInDB)}
 
             </div>
