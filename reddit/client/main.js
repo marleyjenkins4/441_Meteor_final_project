@@ -15,16 +15,19 @@ setTimeout(function(){
 //this is a bad solution because it only fires content//if the data updates we wont see the updates
 
 
-const renderPosts= function(passed_posts){
-  console.log(passed_posts);
+const renderPosts= (passed_posts) => {
+  //console.log(passed_posts);
 
-  let formattedPosts = passed_posts.map(function(post){
+  let formattedPosts = passed_posts.map((post) => {
     return <p key={post._id}>{post.topic} have {post.votes} vote[s]</p>;
 
   });
   return formattedPosts;
 };
- const processFormDataFunction= function(event){
+
+
+
+ const processFormDataFunction= (event) => {
    // the event (sometimers e ) parameter is a default event handler object
    //that is passed by in the browser  when an event occurs
    //this is an important argument because it allows us to access the topic name
@@ -49,15 +52,11 @@ const renderPosts= function(passed_posts){
 
 
 
-Meteor.startup(function(){
+Meteor.startup(() => {
 
-  UP_Collection_Access.insert({
-    topic: 'kids',
-    votes:5,
-  });
   //it is better to use built in meteor function called Tracker
   //Tracker queries and reruns code when queries  change
-  Tracker.autorun(function() {
+  Tracker.autorun(() => {
   //  console.log('Posting 3', UP_Collection_Access.find().fetch());
     const allPostsInDB=UP_Collection_Access.find().fetch();
 
