@@ -24,26 +24,41 @@ const renderPosts= function(passed_posts){
   });
   return formattedPosts;
 };
+ const processFormDataFunction= function(event){
+   event.preventDefault();
+   let newTopic=event.target.formInputNameAttribute.value;
+  console.log(newTopic);
+  if(newTopic){
+    event.target.formInputNameAttribute.value='';
+  }
 
+ };
 
 
 
 Meteor.startup(function(){
+
+  UP_Collection_Access.insert({
+    topic: 'kids',
+    votes:5,
+  });
   //it is better to use built in meteor function called Tracker
   //Tracker queries and reruns code when queries  change
   Tracker.autorun(function() {
   //  console.log('Posting 3', UP_Collection_Access.find().fetch());
-    const posts=UP_Collection_Access.find().fetch();
+    const allPostsInDB=UP_Collection_Access.find().fetch();
 
   let title="CSCI EXAM";
   let jsx= (
             <div>
 
               <h1> {title}</h1>
+              <form onSubmit ={processFormDataFunction}>
+                <input type='text' name='formInputNameAttribute' placeholder='Topic Name'/>
+                <button> Add Topic </button>
+                </form>
 
-
-
-              {renderPosts(posts)}
+              {renderPosts(allPostsInDB)}
 
             </div>
   );

@@ -19,9 +19,9 @@ Meteor.startup(function(){
 );
 
 
-  console.log(UP_Collection_Access.find().fetch());
   //.find() returns everything
   //.fetch()  is a pointer to some documents in the // DB
   // to get an array of the documents you use .fetch()
 
+UP_Collection_Access.find().fetch()
 });
