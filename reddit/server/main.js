@@ -7,67 +7,6 @@ import {UP_Collection_Access} from './../imports/api/user_posts.js';
 
 
 Meteor.startup(() => {
-//convention is to capitalize class names
-  class Person{
-
-  };
-
-  let me= new Person(); //this will create ab empty object
-                        //which is expected because there is no data for this person
-  console.log(me);
-
-
-  class Person2 { //constructor called behind scenes
-    constructor(name){
-      //so far the name is not stored on the Person instance. the following does that
-
-      this.name = name;
-      //every instance can have a diffrent name and its stored in name
-
-
-    }
-
-  } // no comma or semi-this correct class definition for ES6
-  let me2= new Person2('Michael'); //this passes to the class's constructor function
-  console.log(me2);
-
-  class Person3 {
-
-
-    constructor(name ='anonymous'){
-
-      this.name = name;
-
-
-    }
-}
-let me3= new Person3(); //will print anonymous
-let me3b= new Person3('passed name'); // will print anonymous
-console.log(me3,me3b);
-
-//the following sets up a method
-class Person4{
-  constructor(name='marley'){
-    this.name = name;
-  }
-  getGreeting(){
-    //return custom greeting using their names
-    //will use ES6 template strings
-    //these are disned to make it easy to inject values into a strings
-    //will use the back tick which is to the left of the I key
-    // return 'hi. I am + this name' ; will work but template are
-    return `hi , I am ${this.name}`; // this is a js expression
-
-  }
-}
-let me4= new Person4(); // will print anonymous
-
-
-console.log(me4.getGreeting());
-
-
-
-
 
 class Person5{
   constructor(name = 'anonymous', age=0){
@@ -83,11 +22,69 @@ class Person5{
     return `${this.name} is ${this.age}`;
   }
 }
+  //This class takes all the property of the person5 class
+  class Employee extends Person5{
+
+  }
   let me5= new Person5('newman', 33);
   console.log(me5.getGreeting());
   console.log(me5.getPersonDescription());
 
-});
+  let me6= new Employee('chris', 44);
+  console.log(me6.getPersonDescription());
+
+  //employee2 class passes a job title into employee2 contstucotr
+  class Employee2 extends Person5{ // this means Employee is identitcal to Person5
+    constructor(name, age, title){ // get name/age from super and title has no def in case
+      super(name,age); // this calls the parent constructor and asks for name and age
+      this.title = title;
+
+    }
+
+    hasJob(){
+      //this.title; // string or undefined but wewant a boolean if they did or didnt
+      return !!this.title; // this flips twice. first to if underfined (true)
+                          // second is false- no job
+
+    }
+
+  }
+  let me7= new Employee2('pat', 55, 'driver'); // we need a constructor that can handle the data provided
+  console.log(me7.getPersonDescription()); // this is coming from Person5
+  console.log('has job', me7.hasJob()); // this is testing that extra argument
+
+
+  //Aise from creating our own functions, we can override functions
+  //same as the constructor, just name it again in the sub
+
+
+    class Employee3 extends Person5{ // this means Employee is identitcal to Person5
+      constructor(name, age, title){ // get name/age from super and title has no def in case
+        super(name,age); // this calls the parent constructor and asks for name and age
+        this.title = title;
+
+      }
+      getPersonDescription(){ // they dont have a title, use parent's desc. if title then use title
+        if (this.title){ // checks to see if title exits
+          return `hi, this is ${this.name} and I am a[n] ${this.title}`;
+
+        }
+        else{
+          return super.getPersonDescription();
+        }
+
+      }
+
+    }
+    let me8= new Employee3('des', 19 ,'actor');
+    console.log(me8.getPersonDescription());
+    let me9= new Employee3('pat' , 33);
+    console.log(me9.getPersonDescription());
+
+
+
+
+  });
 
 /*
   Basics of class- define a class, define a constructor function which sets up
