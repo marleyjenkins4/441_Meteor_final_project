@@ -3,6 +3,11 @@ import React from 'react'; // specficy the module and then specify  the library 
 import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor'; //named export from Meteor
 import {UP_Collection_Access} from './../imports/api/user_posts.js';
+import TitleBar from './../imports/ui/TitleBar.js';
+import AddTopics from './../imports/ui/AddTopics.js';
+
+
+
 
 //the following is an empty array b/c DDP has synched up with the two DB
 console.log(UP_Collection_Access.find().fetch());
@@ -75,33 +80,34 @@ const renderPosts= (passed_posts) => {
 
 
 
-Meteor.startup(() => {
-
-  //it is better to use built in meteor function called Tracker
-  //Tracker queries and reruns code when queries  change
-  Tracker.autorun(() => {
-  //  console.log('Posting 3', UP_Collection_Access.find().fetch());
-    const allPostsInDB=UP_Collection_Access.find().fetch();
-
-  let title="441 reddit";
-  let jsx= (
-            <div>
-
-              <h1> {title}</h1>
-              <form onSubmit={processFormDataFunction}>
-              <input type='text' name= "formInputNameAttribute" placeholder='Topic Name'/>
-              <button> Add Topic </button>
-              </form>
-              {renderPosts(allPostsInDB)}
-
-            </div>
-  );
-  ReactDOM.render (jsx,document.getElementById('content'));
-});
 
 
+  Meteor.startup(() => {
 
-});
+    //it is better to use built in meteor function called Tracker
+    //Tracker queries and reruns code when queries  change
+    Tracker.autorun(() => {
+    //  console.log('Posting 3', UP_Collection_Access.find().fetch());
+      const allPostsInDB=UP_Collection_Access.find().fetch();
+
+    let title="441 reddit";
+    let jsx= (
+              <div>
+
+              <TitleBar />
+                <form onSubmit={processFormDataFunction}>
+                <input type='text' name= "formInputNameAttribute" placeholder='Topic Name'/>
+                <button> Add Topic </button>
+                </form>
+                {renderPosts(allPostsInDB)}
+                <AddTopics />
+              </div>
+    );
+    ReactDOM.render (jsx,document.getElementById('content'));
+  });
+
+
+  });
 
 
 //db stuff
