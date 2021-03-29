@@ -50,7 +50,7 @@ class Person4{
   constructor(name='marley'){
     this.name = name;
   }
-  getGreeting (){
+  getGreeting(){
     //return custom greeting using their names
     //will use ES6 template strings
     //these are disned to make it easy to inject values into a strings
@@ -64,6 +64,28 @@ let me4= new Person4(); // will print anonymous
 
 
 console.log(me4.getGreeting());
+
+
+
+
+
+class Person5{
+  constructor(name = 'anonymous', age=0){
+    this.age= age;
+    this.name=name;
+  }
+  getGreeting(){
+
+    return `hi , I am ${this.name}`;
+
+  }
+  getPersonDescription(){
+    return `${this.name} is ${this.age}`;
+  }
+}
+  let me5= new Person5('newman', 33);
+  console.log(me5.getGreeting());
+  console.log(me5.getPersonDescription());
 
 });
 
