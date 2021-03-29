@@ -84,6 +84,29 @@ class Person5{
 
 
 
+
+
+
+    class Programmer extends Person5{
+      constructor(name, age, language= 'cobol'){
+        super(name,age);
+        this.language=language;
+      }
+      getGreeting(){
+
+        return `hi, this is ${this.name} and I am ${this.age} and I like to program is ${this.language}`
+
+        }
+
+      }
+      let me11= new Programmer('marley', 22,'java');
+      console.log(me11.getGreeting());
+
+
+
+
+
+
   });
 
 /*
