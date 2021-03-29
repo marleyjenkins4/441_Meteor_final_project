@@ -19,7 +19,22 @@ const renderPosts= (passed_posts) => {
   //console.log(passed_posts);
 
   let formattedPosts = passed_posts.map((post) => {
-    return <p key={post._id}>{post.topic} have {post.votes} vote[s]</p>;
+
+    return  (  <p key={post._id}>{post.topic} have {post.votes} vote[s]{' '}
+      <button onClick={() => {
+
+          UP_Collection_Access.remove({_id: post._id})
+      }}> X </button>
+      </p>
+);
+    // return
+    // (
+    //     <p key={post._id}>{post.topic} have {post.votes} vote[s] {''}
+    //     <button onClick={() => { //nice anonymous arrow functions
+    //       UP_Collection_Access.remove({_id: post._id})
+    //     }} X </button>
+    //     </p>
+    // );
 
   });
   return formattedPosts;
@@ -28,7 +43,7 @@ const renderPosts= (passed_posts) => {
 
 
  const processFormDataFunction= (event) => {
-   // the event (sometimers e ) parameter is a default event handler object
+   // the event (sometimes e ) parameter is a default event handler object
    //that is passed by in the browser  when an event occurs
    //this is an important argument because it allows us to access the topic name
    //which we need in order to insert a new topic into the db
@@ -79,3 +94,10 @@ Meteor.startup(() => {
 
 
 });
+
+
+//db stuff
+
+// to find a specfic topic db.user_posts_collection.find({topic: 'dogs'})
+
+// to remove db.users_posts_collection.remove({topic: 'dogs'})
