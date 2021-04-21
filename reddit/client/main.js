@@ -94,7 +94,7 @@ const renderPosts= (passed_posts) => {
     let jsx= (
               <div>
 
-              <TitleBar  title = {title}/>
+              <TitleBar  title = {title} moderator='newman'/>
                  <AddTopics />
                 <form onSubmit={processFormDataFunction}>
                 <input type='text' name= "formInputNameAttribute" placeholder='Topic Name'/>

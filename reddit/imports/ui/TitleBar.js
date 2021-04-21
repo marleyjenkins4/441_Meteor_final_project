@@ -7,18 +7,28 @@ export default class TitleBar extends React.Component{ // jsx requires uppercase
   render(){
     return (
       <>
+        {/*<h1>441 reddit</h1>*/}
 
          <h1>{this.props.title}</h1>
+         {/* Challenge display a moderator for the 441 reddit page
+           it should be required and should be a string
+           in client/ main.js
+           modify <TitleBar title = {title}/>
+           in a manner to have moderator's name show up under the Title
+           */}
+        <p> moderator: {this.props.moderator}</p>
       </>
     );
     }
+
   }; // this class will move to imports/ui/Titlebar.js
   TitleBar.propTypes={ // this equals an object
     title : PropTypes.string.isRequired, //throws warnings in browser when not string
     //useful if you did create the componaent and if you are trying to use it wrong
+    moderator : PropTypes.string.isRequired,
   };
 
   TitleBar.defaultProps={
-    title: 'Default Title'; // this removes the // WARNING:
-    
+    title: 'Default Title', // this removes the // WARNING:
+
   }
