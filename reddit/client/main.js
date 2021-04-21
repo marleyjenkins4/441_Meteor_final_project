@@ -74,7 +74,7 @@ const renderPosts= (passed_posts) => {
               <div>
 
               <TitleBar  title = {title} moderator='newman'/>
-               <AddTopics />
+               <AddTopics votes= {10}/>
                 {renderPosts(allPostsInDB)}
 
               </div>
