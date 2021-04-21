@@ -21,7 +21,7 @@ export default class AddTopics extends React.Component{ // jsx requires uppercas
      event.target.formInputNameAttribute.value=''; //clears input box
      UP_Collection_Access.insert({
        topic: newTopic,
-       votes: this.props.votes,
+       votes: 0,
      });
    }
   }
