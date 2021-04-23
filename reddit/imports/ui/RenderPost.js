@@ -1,4 +1,6 @@
 import React from 'react'; // specficy the module and then specify  the library name
+import {UP_Collection_Access} from './../api/user_posts.js';
+import PropTypes from 'prop-types';
 
 
 
@@ -28,3 +30,6 @@ export default class RenderPost extends React.Component{ // jsx requires upperca
     );
     }
   };
+  RenderPost.propTypes ={
+    post_prop_obj: PropTypes.object.isRequired,
+  }
