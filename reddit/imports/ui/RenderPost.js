@@ -10,10 +10,10 @@ export default class RenderPost extends React.Component{ // jsx requires upperca
   render(){
     return (
       <>
-      <div key={this.props.post_prop_obj._id} className='singleItemStyle'>
+      <div key={this.props.post_prop_obj._id} className='single-block-item-style'>
         {this.props.post_prop_obj.topic} have {this.props.post_prop_obj.votes} vote[s]{' '}
           <button onClick={() => {
-
+-
               UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes:1}})
           }}>+1</button>
           <button onClick={() => {
