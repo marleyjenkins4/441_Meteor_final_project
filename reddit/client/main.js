@@ -36,7 +36,8 @@ setTimeout(function(){
     //  console.log('Posting 3', UP_Collection_Access.find().fetch());
       const allPostsInDB=UP_Collection_Access.find({},{sort: {votes: -1}}).fetch();
       let title="441 reddit";
-      ReactDOM.render (<App passedPropTitle={title} passedPropModerator= {'newman'} passedPropAllPosts={allPostsInDB}/>,
+      ReactDOM.render (<App passedPropTitle={title} passedPropModerator= {'newman'} passedPropAllPosts={allPostsInDB}
+      />,
       document.getElementById('content'));
   });
 

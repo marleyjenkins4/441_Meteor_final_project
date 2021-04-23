@@ -6,7 +6,9 @@ export default class TopicList extends React.Component{
   renderAllPosts(){
     if(this.props.passed_posts.length ===0 ){
       return(
+        <div className='singleItemStyle'>
         <p> Add a new topic to get started! </p>
+        </div>
       );
     }
     else{

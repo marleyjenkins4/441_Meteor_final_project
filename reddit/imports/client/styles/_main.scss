@@ -12,7 +12,8 @@ html {
                     // i.e., 1.2rem = 1.2*10 = 12px
 }
 body {
-  color: grey;
+  background-color: grey;
+  font-size: 1.6rem;
   font-family: Helvetica, Arial, sans-serif;
 }
 h1 {  // this makes h1 a child of .title-bar
@@ -23,3 +24,4 @@ h1 {  // this makes h1 a child of .title-bar
 
 @import './components/_titlebar.scss';
 @import './components/_wrapper.scss';
+@import './components/_singleItem.scss';
