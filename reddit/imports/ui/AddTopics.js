@@ -26,7 +26,9 @@ export default class AddTopics extends React.Component{ // jsx requires uppercas
    }
   }
   render(){
+
     return (
+
       <div className='singleItemStyle'>
       <form onSubmit={this.processFormData.bind(this)}>
         <input type='text' name= "formInputNameAttribute" placeholder='Topic Name'/>

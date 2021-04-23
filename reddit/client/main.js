@@ -35,8 +35,10 @@ setTimeout(function(){
     Tracker.autorun(() => {
     //  console.log('Posting 3', UP_Collection_Access.find().fetch());
       const allPostsInDB=UP_Collection_Access.find({},{sort: {votes: -1}}).fetch();
-      let title="441 reddit";
+      let title="Facebook";
       ReactDOM.render (<App passedPropTitle={title} passedPropModerator= {'newman'} passedPropAllPosts={allPostsInDB}
+      passedFooter={'\u00A9 Facebook'/* \u00A9 unicode sequence for copyright */}
+
       />,
       document.getElementById('content'));
   });
