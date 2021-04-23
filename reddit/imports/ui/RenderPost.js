@@ -8,7 +8,22 @@ export default class RenderPost extends React.Component{ // jsx requires upperca
   render(){
     return (
       <>
-        <p> placeholder </p>
+      <p key={this.props.post_prop_obj._id}>
+      {this.props.post_prop_obj.topic} have {this.props.post_prop_obj.votes} vote[s]{' '}
+        <button onClick={() => {
+
+            UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes:1}})
+        }}>+1</button>
+        <button onClick={() => {
+
+            UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes:-1}})
+        }}>-1</button>
+          <button onClick={() => {
+
+              UP_Collection_Access.remove({_id: this.props.post_prop_obj._id})
+          }}> X </button>
+          </p>
+
       </>
     );
     }

@@ -25,7 +25,7 @@ const renderPosts= (passed_posts) => {
   //console.log(passed_posts);
 
   let formattedPosts = passed_posts.map((post) => {
-    return <RenderPost key= {post._id}/>
+    return <RenderPost key= {post._id} post_prop_obj={post}/>
 
 
 //     return  (  <p key={post._id}>{post.topic} have {post.votes} vote[s]{' '}
