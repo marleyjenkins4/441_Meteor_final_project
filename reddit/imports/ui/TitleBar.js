@@ -14,10 +14,12 @@ renderModerator(){
 }
   render(){
     return (
-      <div>
-      <h1> {this.props.title} </h1>
-      {this.renderModerator()}
-      </div>
+      <div className='wrapper'>
+            <div className='title-bar'>
+              <h1>{this.props.title}</h1>
+              {this.renderModerator()}
+            </div>
+            </div>
     );
    }
 
