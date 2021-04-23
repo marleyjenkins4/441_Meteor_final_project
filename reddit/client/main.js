@@ -3,10 +3,7 @@ import React from 'react'; // specficy the module and then specify  the library 
 import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor'; //named export from Meteor
 import {UP_Collection_Access} from './../imports/api/user_posts.js';
-import TitleBar from './../imports/ui/TitleBar.js';
-import AddTopics from './../imports/ui/AddTopics.js';
-import RenderPost from './../imports/ui/RenderPost.js';
-import TopicList from './../imports/ui/TopicList.js';
+import App from './../imports/ui/App.js';
 
 
 
@@ -38,17 +35,9 @@ setTimeout(function(){
     Tracker.autorun(() => {
     //  console.log('Posting 3', UP_Collection_Access.find().fetch());
       const allPostsInDB=UP_Collection_Access.find().fetch();
-
-    let title="441 reddit";
-    let jsx= (
-              <div>
-
-              <TitleBar  title = {title} moderator='newman'/>
-               <AddTopics/>
-                <TopicList passed_posts= {allPostsInDB} />
-              </div>
-    );
-    ReactDOM.render (jsx,document.getElementById('content'));
+      let title="441 reddit";
+      ReactDOM.render (<App passedPropTitle={title} passedPropModerator= {'newman'} passedPropAllPosts={allPostsInDB}/>,
+      document.getElementById('content'));
   });
 
 
