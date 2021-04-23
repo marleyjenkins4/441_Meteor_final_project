@@ -6,6 +6,7 @@ import {UP_Collection_Access} from './../imports/api/user_posts.js';
 import TitleBar from './../imports/ui/TitleBar.js';
 import AddTopics from './../imports/ui/AddTopics.js';
 import RenderPost from './../imports/ui/RenderPost.js';
+import TopicList from './../imports/ui/TopicList.js';
 
 
 
@@ -21,40 +22,6 @@ setTimeout(function(){
 //this is a bad solution because it only fires content//if the data updates we wont see the updates
 
 
-const renderPosts= (passed_posts) => {
-  //console.log(passed_posts);
-
-  let formattedPosts = passed_posts.map((post) => {
-    return <RenderPost key= {post._id} post_prop_obj={post}/>
-
-
-//     return  (  <p key={post._id}>{post.topic} have {post.votes} vote[s]{' '}
-//     <button onClick={() => {
-//
-//         UP_Collection_Access.update({_id: post._id}, {$inc: {votes:1}})
-//     }}>+1</button>
-//     <button onClick={() => {
-//
-//         UP_Collection_Access.update({_id: post._id}, {$inc: {votes:-1}})
-//     }}>-1</button>
-//       <button onClick={() => {
-//
-//           UP_Collection_Access.remove({_id: post._id})
-//       }}> X </button>
-//       </p>
-// );
-    // return
-    // (
-    //     <p key={post._id}>{post.topic} have {post.votes} vote[s] {''}
-    //     <button onClick={() => { //nice anonymous arrow functions
-    //       UP_Collection_Access.remove({_id: post._id})
-    //     }} X </button>
-    //     </p>
-    // );
-
-  });
-  return formattedPosts;
-};
 
 
 
@@ -78,8 +45,7 @@ const renderPosts= (passed_posts) => {
 
               <TitleBar  title = {title} moderator='newman'/>
                <AddTopics/>
-                {renderPosts(allPostsInDB)}
-
+                <TopicList passed_posts= {allPostsInDB} />
               </div>
     );
     ReactDOM.render (jsx,document.getElementById('content'));
