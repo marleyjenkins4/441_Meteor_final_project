@@ -3,6 +3,8 @@ import {Meteor} from 'meteor/meteor';
 //to finish processing everything before the code inside of startup is run
 
 import {UP_Collection_Access} from './../imports/api/user_posts.js';
+import {UC_Collection_Access} from './../imports/api/user_comments.js';
+
 //this gives us access to the UserPosts object so we can interact with the // DEBUG:
 
 

@@ -26,7 +26,6 @@ export default class TopicList extends React.Component{
     else{
       return this.props.passed_posts.map((post) => {
         return <RenderPost key= {post._id} post_prop_obj={post}/>
-
       });
 }
   }

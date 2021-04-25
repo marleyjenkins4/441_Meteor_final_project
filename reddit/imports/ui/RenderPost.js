@@ -1,32 +1,51 @@
 import React from 'react'; // specficy the module and then specify  the library name
 import {UP_Collection_Access} from './../api/user_posts.js';
 import PropTypes from 'prop-types';
+import AddTopics from './AddTopics.js';
+import AddComments from './AddComments.js';
+
+import {UC_Collection_Access} from './../api/user_comments.js';
 
 
-
-export default class RenderPost extends React.Component{ // jsx requires uppercase when naming
-
+export default class RenderPost extends React.Component{
 
   render(){
     return (
       <>
       <div key={this.props.post_prop_obj._id} className='single-block-item-style'>
-          <button   className= 'button button--round' onClick={() => {
--
-              UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes:1}})
-          }}>+1</button>
+      <div className='post'>
+      <div>
+          <h3 className='post__topic'>
+          {this.props.post_prop_obj.topic}
+         </h3>
+        <p className='post__stats'>
+            have {this.props.post_prop_obj.votes} vote[s]{' '}
+        </p>
 
-          <button  className= ' button button--round ' onClick={() => {
+        <AddComments />
 
-              UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes:-1}})
-          }}>-1</button>
-            <button className= ' button button--round' onClick={() => {
+     </div>
+        <div className='post__actions'>
+                    <button   className= 'button button--round' onClick={() => {
 
-                UP_Collection_Access.remove({_id: this.props.post_prop_obj._id})
-            }}> X </button>
-            {this.props.post_prop_obj.topic} have {this.props.post_prop_obj.votes} vote[s]{' '}
+                        UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes:1}})
+                    }}>+1</button>
 
-            </div>
+                    <button  className= ' button button--round ' onClick={() => {
+
+                        UP_Collection_Access.update({_id: this.props.post_prop_obj._id}, {$inc: {votes:-1}})
+                    }}>-1</button>
+                      <button className= ' button button--round' onClick={() => {
+
+                          UP_Collection_Access.remove({_id: this.props.post_prop_obj._id})
+                      }}> X </button>
+
+                </div>
+
+              </div>
+              </div>
+
+
 
       </>
     );

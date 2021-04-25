@@ -2,9 +2,11 @@ import React from 'react';
 import AddTopics from './AddTopics.js';
 import TitleBar from './TitleBar.js';
 import TopicList from './TopicList.js';
-import PropTypes from 'prop-types';
-import Footer from './Footer.js';
+import CommentList from './CommentList.js';
 
+import PropTypes from 'prop-types';
+import AddComments from './AddComments.js';
+import Footer from './Footer.js';
 
 export default class App extends React.Component{
   render(){
@@ -15,7 +17,10 @@ export default class App extends React.Component{
           moderator={this.props.passedPropModerator}/>
           <div className='wrapper'>
             <AddTopics />
+
             <TopicList passed_posts= {this.props.passedPropAllPosts} />
+            <CommentList passed_comments= {this.props.passedPropAllComments} />
+
         </div>
         <Footer footerText={this.props.passedFooter} />
       </>
