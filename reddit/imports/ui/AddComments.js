@@ -19,6 +19,7 @@ export default class AddComments extends React.Component{ // jsx requires upperc
    if(newComment){
      event.target.formInputNameAttribute.value=''; //clears input box
      UC_Collection_Access.insert({
+    
        comment: newComment,
        votes:0,
      });

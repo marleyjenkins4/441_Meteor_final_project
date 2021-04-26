@@ -21,7 +21,7 @@ renderModerator(){
             </div>
             </div>
     );
-   }
+   } 
 
   }; // this class will move to imports/ui/Titlebar.js
   TitleBar.propTypes={ // this equals an object

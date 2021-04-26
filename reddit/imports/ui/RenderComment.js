@@ -1,6 +1,7 @@
 import React from 'react'; // specficy the module and then specify  the library name
 import PropTypes from 'prop-types';
 import AddComments from './AddComments.js';
+import TopicList from './TopicList.js';
 
 import {UC_Collection_Access} from './../api/user_comments.js';
 
@@ -10,6 +11,7 @@ export default class RenderComment extends React.Component{
   render(){
     return (
       <>
+
       <div key={this.props.comment_prop_obj._id}>
       <div>
       <div>
@@ -21,6 +23,7 @@ export default class RenderComment extends React.Component{
         </p>
 
      </div>
+
         <div>
                     <button   className= 'button button--round' onClick={() => {
 

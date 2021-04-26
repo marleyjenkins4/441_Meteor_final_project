@@ -23,11 +23,13 @@ export default class AddTopics extends React.Component{ // jsx requires uppercas
      UP_Collection_Access.insert({
        topic: newTopic,
        votes: 0,
-
-
      });
-   }
-  }
+
+}
+
+}
+
+
 
 
 
@@ -37,7 +39,7 @@ export default class AddTopics extends React.Component{ // jsx requires uppercas
 
       <div className='singleItemStyle'>
       <form className= 'form' onSubmit={this.processFormData.bind(this)}>
-        <input className= 'form__input' type='text' name= "formInputNameAttribute" placeholder='Topic Name'/>
+  <input className= 'form__input' type='text' name= "formInputNameAttribute" placeholder='Topic Name'/>
         <button className= ' button'> Add Topic </button>
       </form>
 

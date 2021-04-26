@@ -2,12 +2,11 @@ import React from 'react'; // specficy the module and then specify  the library 
                            //meteor takes care of the rest
 import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor'; //named export from Meteor
-import {UP_Collection_Access} from './../imports/api/user_posts.js';
+import {UP_Collection_Access, Calculate_rank_and_position_for_posts} from './../imports/api/user_posts.js';
 import {UC_Collection_Access} from './../imports/api/user_comments.js';
 
 import App from './../imports/ui/App.js';
 
-import RenderPost from './../imports/ui/RenderPost.js';
 
 
 
@@ -39,9 +38,11 @@ setTimeout(function(){
     //  console.log('Posting 3', UP_Collection_Access.find().fetch());
       const allPostsInDB=UP_Collection_Access.find({},{sort: {votes: -1}}).fetch();
       const allCommentsInDB=UC_Collection_Access.find({},{sort: {votes: -1}}).fetch();
+      let positioned_posts = Calculate_rank_and_position_for_posts(allPostsInDB);
 
       let title="Facebook";
-      ReactDOM.render (<App passedPropTitle={title} passedPropModerator= {'newman'} passedPropAllPosts={allPostsInDB}
+      ReactDOM.render (<App passedPropTitle={title} passedPropModerator= {'newman'}  passedPropAllPosts={positioned_posts}
+
       passedPropAllComments={allCommentsInDB}
       passedFooter={'\u00A9 Facebook'/* \u00A9 unicode sequence for copyright */}
 

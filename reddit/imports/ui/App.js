@@ -3,7 +3,6 @@ import AddTopics from './AddTopics.js';
 import TitleBar from './TitleBar.js';
 import TopicList from './TopicList.js';
 import CommentList from './CommentList.js';
-
 import PropTypes from 'prop-types';
 import AddComments from './AddComments.js';
 import Footer from './Footer.js';
@@ -18,8 +17,10 @@ export default class App extends React.Component{
           <div className='wrapper'>
             <AddTopics />
 
-            <TopicList passed_posts= {this.props.passedPropAllPosts} />
-            <CommentList passed_comments= {this.props.passedPropAllComments} />
+            <TopicList passed_posts= {this.props.passedPropAllPosts}
+              passed_comments={this.props.passedPropAllComments}
+/>
+
 
         </div>
         <Footer footerText={this.props.passedFooter} />
@@ -27,6 +28,7 @@ export default class App extends React.Component{
     )
   }
 };
+
 //require title and posts
 App.propTypes ={
   passedPropTitle: PropTypes.string.isRequired,
